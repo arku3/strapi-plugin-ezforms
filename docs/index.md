@@ -6,7 +6,8 @@ layout: doc
 
 # Strapi Ez Forms Docs
 
-_This plugin only supports Strapi v5_
+_This plugin only supports Strapi v5_  
+_For Strapi v4 support, please use *v0.17.0*_
 
 This plugin allows you to easily consume forms from your front end and automatically reject spam, send out
 notifications, and store the data in your database.
