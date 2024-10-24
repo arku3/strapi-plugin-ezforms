@@ -12,6 +12,16 @@ export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
       .formatData(data);
     const message =
       formName !== "form" ? `${formName} \n ${formattedData}` : formattedData;
+
+    const formattedDataHtml = strapi
+      .plugin("ezforms")
+      .service("formatData")
+      .formatDataAsHtml(data);
+    const htmlMessage =
+      formName !== "form"
+        ? `<p><strong>${formName}</strong></p>${formattedDataHtml}`
+        : formattedDataHtml;
+
     //loop through the recipients and send an email
     for (const recipient of recipients) {
       try {
@@ -21,7 +31,8 @@ export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
           subject: config.subject
             ? config.subject
             : "New Contact Form Submission",
-          html: message,
+          text: message,
+          html: htmlMessage,
         });
       } catch (e) {
         strapi.log.error(e);

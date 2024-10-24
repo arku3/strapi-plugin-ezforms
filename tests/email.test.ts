@@ -17,7 +17,8 @@ describe("Email Notification Provider", function () {
         return {
           service: function () {
             return {
-              formatData: vi.fn(),
+              formatData: vi.fn(() => ""),
+              formatDataAsHtml: vi.fn(() => ""),
             };
           },
         };
