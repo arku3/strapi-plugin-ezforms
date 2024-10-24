@@ -1,4 +1,4 @@
-import submitController from './submit-controller';
+import submitController from "./submit-controller";
 
 export default {
   submitController: submitController,

@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/strapi';
+import type { Core } from "@strapi/strapi";
 
 export interface CoreStrapi extends Core.Strapi {}
 export type CaptchaValidateResult =

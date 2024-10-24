@@ -34,8 +34,9 @@
     "docs:build": "vitepress build docs",
     "docs:dev": "vitepress dev docs",
     "docs:serve": "vitepress serve docs",
+    "format": "prettier --write \"server/src/**/*.{ts,js}\"",
     "lint": "npm run lint:js",
-    "lint:js": "eslint --ext \".js\" --ignore-path .gitignore .",
+    "lint:js": "eslint --ext \".ts\" --ignore-path .gitignore .",
     "test": "jest --coverage",
     "test:ts:back": "run -T tsc -p server/tsconfig.json",
     "verify": "strapi-plugin verify",
@@ -46,6 +47,7 @@
     "axios": "^1.7.7"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@strapi/sdk-plugin": "^5.2.7",
     "@strapi/strapi": "^5.1.1",
     "@strapi/types": "^5.1.1",

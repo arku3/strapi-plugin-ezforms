@@ -1,38 +1,38 @@
-export default {  
-  kind: 'collectionType',
-  collectionName: 'recipients',
+export default {
+  kind: "collectionType",
+  collectionName: "recipients",
   info: {
-    singularName: 'recipient', // kebab-case mandatory
-    pluralName: 'recipients', // kebab-case mandatory
-    displayName: 'Notification Recipients',
-    description: 'List of Notification Recipients'  
+    singularName: "recipient", // kebab-case mandatory
+    pluralName: "recipients", // kebab-case mandatory
+    displayName: "Notification Recipients",
+    description: "List of Notification Recipients",
   },
   options: {
     draftAndPublish: false,
   },
   pluginOptions: {
-    'content-manager': {
+    "content-manager": {
       visible: true,
     },
-    'content-type-builder': {
+    "content-type-builder": {
       visible: false,
     },
   },
   attributes: {
     name: {
-      type: 'string',
+      type: "string",
       min: 1,
       max: 50,
       configurable: false,
     },
     email: {
-      type: 'string',
+      type: "string",
       min: 1,
       max: 50,
       configurable: false,
     },
     number: {
-      type: 'string',
+      type: "string",
       min: 1,
       max: 50,
       configurable: false,
