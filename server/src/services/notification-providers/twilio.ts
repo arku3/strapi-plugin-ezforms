@@ -39,6 +39,7 @@ export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
         );
       } catch (e) {
         strapi.log.error(e);
+        return false;
       }
     }
     return true;
