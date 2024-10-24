@@ -1,11 +1,8 @@
-'use strict'
-
-
-module.exports = {
+export default {
   default: {
     captchaProvider: {
       name: 'none',
-      config: {}
+      config: {},
     },
     enableFormName: false,
     notificationProviders: [
@@ -15,10 +12,9 @@ module.exports = {
         config: {
           from: 'noreply@strapi.io',
           subject: 'New Contact Form Submission',
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
-  validator() {
-  },
-}
+  validator() {},
+};
