@@ -1,23 +1,14 @@
 /// <reference types="koa" />
 declare const _default: {
-    register: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => void;
+    register: () => void;
     bootstrap: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
+        strapi: import("./types").CoreStrapi;
     }) => void;
-    destroy: ({ strapi }: {
-        /**
-         * Plugin server methods
-         */
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => void;
+    destroy: () => void;
     config: {
         default: {
             captchaProvider: {
-                name: string; /**
-                 * Plugin server methods
-                 */
+                name: string;
                 config: {};
             };
             enableFormName: boolean;
@@ -33,8 +24,11 @@ declare const _default: {
         validator(): void;
     };
     controllers: {
+        /**
+         * Plugin server methods
+         */
         submitController: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
+            strapi: import("./types").CoreStrapi;
         }) => {
             index(ctx: import("koa").Context): Promise<any>;
         };
@@ -54,20 +48,20 @@ declare const _default: {
     };
     services: {
         recaptcha: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-        }) => import("./types.js").CaptchaProvider;
+            strapi: import("./types").CoreStrapi;
+        }) => import("./types").CaptchaProvider;
         hcaptcha: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-        }) => import("./types.js").CaptchaProvider;
+            strapi: import("./types").CoreStrapi;
+        }) => import("./types").CaptchaProvider;
         turnstile: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-        }) => import("./types.js").CaptchaProvider;
+            strapi: import("./types").CoreStrapi;
+        }) => import("./types").CaptchaProvider;
         email: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-        }) => import("./types.js").NotificationProvider;
+            strapi: import("./types").CoreStrapi;
+        }) => import("./types").NotificationProvider;
         twilio: ({ strapi }: {
-            strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-        }) => import("./types.js").NotificationProvider;
+            strapi: import("./types").CoreStrapi;
+        }) => import("./types").NotificationProvider;
         formatData: () => {
             formatData(data: Record<string, unknown>): string;
         };

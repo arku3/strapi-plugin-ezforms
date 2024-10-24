@@ -1,7 +1,7 @@
-import { Core } from '@strapi/strapi';
 import { Context as KoaContext } from 'koa';
+import { CoreStrapi } from '../types';
 declare const _default: ({ strapi }: {
-    strapi: Core.Strapi;
+    strapi: CoreStrapi;
 }) => {
     index(ctx: KoaContext): Promise<any>;
 };

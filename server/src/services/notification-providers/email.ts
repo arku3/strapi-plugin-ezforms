@@ -1,7 +1,6 @@
-import { Core } from '@strapi/strapi';
-import { NotificationProvider } from '../../types.js';
+import { CoreStrapi, NotificationProvider } from '../../types';
 
-export default ({ strapi }: { strapi: Core.Strapi }): NotificationProvider => ({
+export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
   async send(config, formName, data) {
     let recipients = await strapi.query('plugin::ezforms.recipient').findMany();
     //Loop through data and construct message from data object

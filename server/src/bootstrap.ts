@@ -1,8 +1,8 @@
-import { Core } from "@strapi/strapi";
+import { CoreStrapi } from "./types";
 
-const bootstrap = ({ strapi }: { strapi: Core.Strapi }) => {
+const bootstrap = ({ strapi }: { strapi: CoreStrapi }) => {
   // bootstrap phase
-  strapi.log.debug("BootStrap plugin-ezforms");
+  strapi.log.debug("Bootstrap strapi-plugin-ezforms");
 };
 
 export default bootstrap;

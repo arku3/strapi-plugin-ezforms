@@ -1,5 +1,5 @@
-import recipient from './recipient/index.js';
-import submission from './submission/index.js';
+import recipient from './recipient';
+import submission from './submission';
 
 export default {
   recipient: { schema: recipient },

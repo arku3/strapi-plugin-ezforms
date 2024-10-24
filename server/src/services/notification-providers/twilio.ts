@@ -1,8 +1,7 @@
-import { Core } from '@strapi/strapi';
 import axios from 'axios';
-import { NotificationProvider } from '../../types.js';
+import { CoreStrapi, NotificationProvider } from '../../types';
 
-export default ({ strapi }: { strapi: Core.Strapi }): NotificationProvider => ({
+export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
   async send(config, data) {
     let TWILIO_ACCOUNT_SID = config.accountSid;
     let TWILIO_AUTH_TOKEN = config.authToken;

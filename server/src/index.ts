@@ -1,17 +1,17 @@
 /**
  * Application methods
  */
-import bootstrap from './bootstrap.js';
+import bootstrap from './bootstrap';
 /**
  * Plugin server methods
  */
-import config from './config/index.js';
-import contentTypes from './content-types/index.js';
-import controllers from './controllers/index.js';
-import destroy from './destroy.js';
-import register from './register.js';
-import routes from './routes/index.js';
-import services from './services/index.js';
+import config from './config/index';
+import contentTypes from './content-types';
+import controllers from './controllers';
+import destroy from './destroy';
+import register from './register';
+import routes from './routes';
+import services from './services';
 
 export default {
   register,

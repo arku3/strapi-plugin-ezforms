@@ -1,8 +1,7 @@
-import { Core } from '@strapi/strapi';
 import { Context as KoaContext } from 'koa';
-import { CaptchaValidateResult } from '../types.js';
+import { CaptchaValidateResult, CoreStrapi } from '../types';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ strapi }: { strapi: CoreStrapi }) => ({
   async index(ctx: KoaContext) {
     let verification: CaptchaValidateResult = { valid: true, score: -1 };
     let formName = strapi.config.get('plugin::ezforms.enableFormName') ? ctx.request.body.formName : 'form';

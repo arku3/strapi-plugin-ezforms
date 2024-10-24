@@ -1,6 +1,6 @@
 import axios from "axios";
 const bootstrap = ({ strapi }) => {
-  strapi.log.debug("BootStrap plugin-ezforms");
+  strapi.log.info("BootStrap @repo/ezforms plugin");
 };
 const config = {
   default: {
@@ -159,9 +159,9 @@ const submitController = ({ strapi }) => ({
 const controllers = {
   submitController
 };
-const destroy = ({ strapi }) => {
+const destroy = () => {
 };
-const register = ({ strapi }) => {
+const register = () => {
 };
 const routes = {
   "content-api": {

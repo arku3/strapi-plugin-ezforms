@@ -1,5 +1,2 @@
-import { Core } from '@strapi/strapi';
-declare const register: ({ strapi }: {
-    strapi: Core.Strapi;
-}) => void;
+declare const register: () => void;
 export default register;

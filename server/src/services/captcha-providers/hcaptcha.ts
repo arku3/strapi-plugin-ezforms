@@ -1,6 +1,5 @@
-import { Core } from '@strapi/strapi';
 import axios from 'axios';
-import { CaptchaProvider } from '../../types.js';
+import { CaptchaProvider, CoreStrapi } from '../../types';
 
 type HCaptchaVerifyError = string | string[];
 type HCaptchaVerifyResponse = {
@@ -13,7 +12,7 @@ type HCaptchaVerifyResponse = {
   score_reason?: string[];
 };
 
-export default ({ strapi }: { strapi: Core.Strapi }): CaptchaProvider => ({
+export default ({ strapi }: { strapi: CoreStrapi }): CaptchaProvider => ({
   async validate(token) {
     if (!token) {
       strapi.log.error('Missing hCaptcha Token');

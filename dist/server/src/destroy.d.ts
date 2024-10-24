@@ -1,5 +1,2 @@
-import { Core } from '@strapi/strapi';
-declare const destroy: ({ strapi }: {
-    strapi: Core.Strapi;
-}) => void;
+declare const destroy: () => void;
 export default destroy;

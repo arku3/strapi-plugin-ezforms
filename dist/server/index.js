@@ -3,7 +3,7 @@ const axios = require("axios");
 const _interopDefault = (e) => e && e.__esModule ? e : { default: e };
 const axios__default = /* @__PURE__ */ _interopDefault(axios);
 const bootstrap = ({ strapi }) => {
-  strapi.log.debug("BootStrap plugin-ezforms");
+  strapi.log.info("BootStrap @repo/ezforms plugin");
 };
 const config = {
   default: {
@@ -162,9 +162,9 @@ const submitController = ({ strapi }) => ({
 const controllers = {
   submitController
 };
-const destroy = ({ strapi }) => {
+const destroy = () => {
 };
-const register = ({ strapi }) => {
+const register = () => {
 };
 const routes = {
   "content-api": {

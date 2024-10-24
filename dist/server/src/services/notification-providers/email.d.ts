@@ -1,6 +1,5 @@
-import { Core } from '@strapi/strapi';
-import { NotificationProvider } from '../../types.js';
+import { CoreStrapi, NotificationProvider } from '../../types';
 declare const _default: ({ strapi }: {
-    strapi: Core.Strapi;
+    strapi: CoreStrapi;
 }) => NotificationProvider;
 export default _default;

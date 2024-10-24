@@ -1,6 +1,5 @@
-import { Core } from '@strapi/strapi';
-import { CaptchaProvider } from '../../types.js';
+import { CaptchaProvider, CoreStrapi } from '../../types';
 declare const _default: ({ strapi }: {
-    strapi: Core.Strapi;
+    strapi: CoreStrapi;
 }) => CaptchaProvider;
 export default _default;

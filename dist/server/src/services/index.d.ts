@@ -1,19 +1,19 @@
 declare const _default: {
     recaptcha: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => import("../types.js").CaptchaProvider;
+        strapi: import("../types").CoreStrapi;
+    }) => import("../types").CaptchaProvider;
     hcaptcha: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => import("../types.js").CaptchaProvider;
+        strapi: import("../types").CoreStrapi;
+    }) => import("../types").CaptchaProvider;
     turnstile: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => import("../types.js").CaptchaProvider;
+        strapi: import("../types").CoreStrapi;
+    }) => import("../types").CaptchaProvider;
     email: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => import("../types.js").NotificationProvider;
+        strapi: import("../types").CoreStrapi;
+    }) => import("../types").NotificationProvider;
     twilio: ({ strapi }: {
-        strapi: import("@strapi/types/dist/core/strapi.js").Strapi;
-    }) => import("../types.js").NotificationProvider;
+        strapi: import("../types").CoreStrapi;
+    }) => import("../types").NotificationProvider;
     formatData: () => {
         formatData(data: Record<string, unknown>): string;
     };

@@ -1,6 +1,4 @@
-import { Core } from '@strapi/strapi';
-
-const destroy = ({ strapi }: { strapi: Core.Strapi }) => {
+const destroy = () => {
   // destroy phase
 };
 

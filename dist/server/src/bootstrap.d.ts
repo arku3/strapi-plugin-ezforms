@@ -1,5 +1,5 @@
-import { Core } from "@strapi/strapi";
+import { CoreStrapi } from './types';
 declare const bootstrap: ({ strapi }: {
-    strapi: Core.Strapi;
+    strapi: CoreStrapi;
 }) => void;
 export default bootstrap;

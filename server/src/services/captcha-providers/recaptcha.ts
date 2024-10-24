@@ -1,8 +1,7 @@
-import { Core } from '@strapi/strapi';
 import axios from 'axios';
-import { CaptchaProvider } from '../../types.js';
+import { CaptchaProvider, CoreStrapi } from '../../types';
 
-export default ({ strapi }: { strapi: Core.Strapi }): CaptchaProvider => ({
+export default ({ strapi }: { strapi: CoreStrapi }): CaptchaProvider => ({
   async validate(token) {
     if (!token) {
       strapi.log.error('Missing Recaptcha Token');
