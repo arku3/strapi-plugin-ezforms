@@ -21,7 +21,7 @@ captchaProvider: {
   name: 'recaptcha',
   config: {
     secretKey: 'your-key',
-    minimumScore: 0.5
+    score: 0.5
   }
 },
 ```

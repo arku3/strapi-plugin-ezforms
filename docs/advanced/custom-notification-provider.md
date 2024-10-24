@@ -14,23 +14,24 @@ To override this function you can create an [extension in your project](https://
 module.exports = (plugin) => {
   plugin.services.customNotificationProvider = () => ({
     async send(config, data) {
-      console.log(config)
-      console.log(data)
+      console.log(config);
+      console.log(data);
       // access recipient from collection
-      let recipients = await strapi.query('plugin::ezforms.recipient').findMany()
+      let recipients = await strapi
+        .query("plugin::ezforms.recipient")
+        .findMany();
       // format data
-      let message = strapi.plugin('ezforms').service('formatData').formatData(data)
+      let message = strapi
+        .plugin("ezforms")
+        .service("formatData")
+        .formatData(data);
       // custom notification logic
-      console.log("Custom notification logic")
-      return true
-    }
-  })
+      console.log("Custom notification logic");
+      return true;
+    },
+  });
   return plugin;
 };
-
-
 ```
 
 The `data` object is the `formData` object from the request and `config` is the `config` from your Strapi config.
-
-

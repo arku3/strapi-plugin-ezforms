@@ -1,4 +1,4 @@
-const twilioProvider = require('../server/services/notification-providers/twilio')
+const twilioProvider = require('../server/src/services/notification-providers/twilio')
 const axios = require('axios')
 
 

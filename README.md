@@ -5,7 +5,7 @@
 
 # Strapi Forms Plugin
 
-_This plugin only supports Strapi v4_
+_This plugin only supports Strapi v5_
 
 This plugin allows you to easily consume forms from your front end and automatically reject spam, send out
 notifications, and store the data in your database.
@@ -47,7 +47,7 @@ Security issues should be reported using the [security tab](https://github.com/e
  - [ ] Make emails pretty (see custom formatting)
  - [x] Allow providers to be extendable on a per project basis (similar to how email providers work)
  - [ ] Allow selection which notifications are sent to which people
- - [ ] Convert to TS
+ - [x] Convert to TS
  - [x] Add eslint
  - [x] Remove Twilio SDK in favor of HTTP
 

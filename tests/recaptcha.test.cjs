@@ -1,4 +1,4 @@
-const recaptcha = require('../server/services/captcha-providers/recaptcha')
+const recaptcha = require('../server/src/services/captcha-providers/recaptcha')
 const axios = require('axios')
 
 

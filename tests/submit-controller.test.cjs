@@ -1,4 +1,4 @@
-let submitController = require('../server/controllers/submit-controller')
+let submitController = require('../server/src/controllers/submit-controller')
 
 
 describe('Submit Controller', function () {
