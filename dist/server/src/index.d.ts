@@ -24,9 +24,6 @@ declare const _default: {
         validator(): void;
     };
     controllers: {
-        /**
-         * Plugin server methods
-         */
         submitController: ({ strapi }: {
             strapi: import("./types").CoreStrapi;
         }) => {
@@ -34,7 +31,7 @@ declare const _default: {
         };
     };
     routes: {
-        'content-api': {
+        "content-api": {
             type: string;
             routes: {
                 method: string;
@@ -81,10 +78,10 @@ declare const _default: {
                     draftAndPublish: boolean;
                 };
                 pluginOptions: {
-                    'content-manager': {
+                    "content-manager": {
                         visible: boolean;
                     };
-                    'content-type-builder': {
+                    "content-type-builder": {
                         visible: boolean;
                     };
                 };
@@ -124,10 +121,10 @@ declare const _default: {
                     draftAndPublish: boolean;
                 };
                 pluginOptions: {
-                    'content-manager': {
+                    "content-manager": {
                         visible: boolean;
                     };
-                    'content-type-builder': {
+                    "content-type-builder": {
                         visible: boolean;
                     };
                 };

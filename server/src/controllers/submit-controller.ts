@@ -4,7 +4,7 @@ import { CaptchaValidateResult, CoreStrapi } from "../types";
 export default ({ strapi }: { strapi: CoreStrapi }) => ({
   async index(ctx: KoaContext) {
     let verification: CaptchaValidateResult = { valid: true, score: -1 };
-    let formName = strapi.config.get("plugin::ezforms.enableFormName")
+    const formName = strapi.config.get("plugin::ezforms.enableFormName")
       ? ctx.request.body.formName
       : "form";
     // Checks if there is a captcha provider
@@ -35,7 +35,7 @@ export default ({ strapi }: { strapi: CoreStrapi }) => ({
     //sends notifications
     for (const provider of strapi.config.get(
       "plugin::ezforms.notificationProviders"
-    ) as any[]) {
+    ) as Array<{ enabled: boolean; name: "string"; config: unknown }>) {
       if (provider.enabled) {
         try {
           await strapi
@@ -50,7 +50,7 @@ export default ({ strapi }: { strapi: CoreStrapi }) => ({
     }
 
     // Adds to DB
-    let parsedScore = verification.score || -1;
+    const parsedScore = verification.score || -1;
     try {
       await strapi.query("plugin::ezforms.submission").create({
         data: {

@@ -1,4 +1,4 @@
-const email = require('../server/services/notification-providers/email')
+const email = require('../server/src/services/notification-providers/email')
 
 describe('Email Notification Provider', function () {
   let strapi

@@ -1,4 +1,4 @@
-import { CoreStrapi } from './types';
+import { CoreStrapi } from "./types";
 declare const bootstrap: ({ strapi }: {
     strapi: CoreStrapi;
 }) => void;

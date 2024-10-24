@@ -3,7 +3,7 @@ const axios = require("axios");
 const _interopDefault = (e) => e && e.__esModule ? e : { default: e };
 const axios__default = /* @__PURE__ */ _interopDefault(axios);
 const bootstrap = ({ strapi }) => {
-  strapi.log.info("BootStrap @repo/ezforms plugin");
+  strapi.log.debug("Bootstrap strapi-plugin-ezforms");
 };
 const config = {
   default: {
@@ -117,7 +117,7 @@ const contentTypes = {
 const submitController = ({ strapi }) => ({
   async index(ctx) {
     let verification = { valid: true, score: -1 };
-    let formName = strapi.config.get("plugin::ezforms.enableFormName") ? ctx.request.body.formName : "form";
+    const formName = strapi.config.get("plugin::ezforms.enableFormName") ? ctx.request.body.formName : "form";
     if (!(strapi.config.get("plugin::ezforms.captchaProvider.name") === "none") && strapi.config.get("plugin::ezforms.captchaProvider.name")) {
       verification = await strapi.plugin("ezforms").service(strapi.config.get("plugin::ezforms.captchaProvider.name")).validate(ctx.request.body.token);
       if (!verification.valid) {
@@ -133,7 +133,9 @@ const submitController = ({ strapi }) => ({
         }
       }
     }
-    for (const provider of strapi.config.get("plugin::ezforms.notificationProviders")) {
+    for (const provider of strapi.config.get(
+      "plugin::ezforms.notificationProviders"
+    )) {
       if (provider.enabled) {
         try {
           await strapi.plugin("ezforms").service(provider.name).send(provider.config, formName, ctx.request.body.formData);
@@ -143,7 +145,7 @@ const submitController = ({ strapi }) => ({
         }
       }
     }
-    let parsedScore = verification.score || -1;
+    const parsedScore = verification.score || -1;
     try {
       await strapi.query("plugin::ezforms.submission").create({
         data: {
@@ -169,14 +171,16 @@ const register = () => {
 const routes = {
   "content-api": {
     type: "content-api",
-    routes: [{
-      method: "POST",
-      path: "/submit",
-      handler: "submitController.index",
-      config: {
-        policies: []
+    routes: [
+      {
+        method: "POST",
+        path: "/submit",
+        handler: "submitController.index",
+        config: {
+          policies: []
+        }
       }
-    }]
+    ]
   }
 };
 const hcaptcha = ({ strapi }) => ({
@@ -189,8 +193,12 @@ const hcaptcha = ({ strapi }) => ({
         code: 400
       };
     }
-    const secret = strapi.config.get("plugin::ezforms.captchaProvider.config.secret");
-    const sitekey = strapi.config.get("plugin::ezforms.captchaProvider.config.sitekey");
+    const secret = strapi.config.get(
+      "plugin::ezforms.captchaProvider.config.secret"
+    );
+    const sitekey = strapi.config.get(
+      "plugin::ezforms.captchaProvider.config.sitekey"
+    );
     const url = `https://hcaptcha.com/siteverify`;
     let hCaptcha_verify;
     try {
@@ -221,7 +229,9 @@ const hcaptcha = ({ strapi }) => ({
         code: 500
       };
     }
-    if ((hCaptcha_verify.data.score || 0) >= Number(strapi.config.get("plugin::ezforms.captchaProvider.config.score") || 0)) {
+    if ((hCaptcha_verify.data.score || 0) >= Number(
+      strapi.config.get("plugin::ezforms.captchaProvider.config.score") || 0
+    )) {
       return {
         valid: false,
         message: "Risk Score too high",
@@ -244,7 +254,9 @@ const recaptcha = ({ strapi }) => ({
         code: 400
       };
     }
-    const secret_key = strapi.config.get("plugin::ezforms.captchaProvider.config.secretKey");
+    const secret_key = strapi.config.get(
+      "plugin::ezforms.captchaProvider.config.secretKey"
+    );
     const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${token}`;
     let recaptcha_verify;
     try {
@@ -266,7 +278,9 @@ const recaptcha = ({ strapi }) => ({
         code: 500
       };
     }
-    if (recaptcha_verify.data.score < Number(strapi.config.get("plugin::ezforms.captchaProvider.config.score") ?? 0)) {
+    if (recaptcha_verify.data.score < Number(
+      strapi.config.get("plugin::ezforms.captchaProvider.config.score") ?? 0
+    )) {
       return {
         valid: false,
         message: "Score Not High Enough",
@@ -289,7 +303,9 @@ const turnstile = ({ strapi }) => ({
         code: 400
       };
     }
-    const secret = strapi.config.get("plugin::ezforms.captchaProvider.config.secret");
+    const secret = strapi.config.get(
+      "plugin::ezforms.captchaProvider.config.secret"
+    );
     const url = `https://challenges.cloudflare.com/turnstile/v0/siteverify`;
     const requestContext = strapi.requestContext.get();
     const remoteip = requestContext?.request.ip;
@@ -325,11 +341,11 @@ const turnstile = ({ strapi }) => ({
 });
 const email = ({ strapi }) => ({
   async send(config2, formName, data) {
-    let recipients = await strapi.query("plugin::ezforms.recipient").findMany();
-    let formattedData = strapi.plugin("ezforms").service("formatData").formatData(data);
-    let message = formName !== "form" ? `${formName} 
+    const recipients = await strapi.query("plugin::ezforms.recipient").findMany();
+    const formattedData = strapi.plugin("ezforms").service("formatData").formatData(data);
+    const message = formName !== "form" ? `${formName} 
  ${formattedData}` : formattedData;
-    for (let recipient2 of recipients) {
+    for (const recipient2 of recipients) {
       try {
         await strapi.plugins["email"].services.email.send({
           to: recipient2.email,
@@ -346,12 +362,12 @@ const email = ({ strapi }) => ({
 });
 const twilio = ({ strapi }) => ({
   async send(config2, data) {
-    let TWILIO_ACCOUNT_SID = config2.accountSid;
-    let TWILIO_AUTH_TOKEN = config2.authToken;
-    let recipients = await strapi.query("plugin::ezforms.recipient").findMany();
+    const TWILIO_ACCOUNT_SID = config2.accountSid;
+    const TWILIO_AUTH_TOKEN = config2.authToken;
+    const recipients = await strapi.query("plugin::ezforms.recipient").findMany();
     let message = "New Form Submission: \n";
     message += strapi.plugin("ezforms").service("formatData").formatData(data);
-    for (let recipient2 of recipients) {
+    for (const recipient2 of recipients) {
       if (!recipient2.number) {
         continue;
       }
@@ -360,12 +376,18 @@ const twilio = ({ strapi }) => ({
         params.append("To", recipient2.number);
         params.append("From", config2.from);
         params.append("Body", message);
-        await axios__default.default.post(`https://api.twilio.com/2010-04-01/Accounts/${TWILIO_ACCOUNT_SID}/Messages.json`, params, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: "Basic " + Buffer.from(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`).toString("base64") + ")"
+        await axios__default.default.post(
+          `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_ACCOUNT_SID}/Messages.json`,
+          params,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: "Basic " + Buffer.from(
+                `${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`
+              ).toString("base64") + ")"
+            }
           }
-        });
+        );
       } catch (e) {
         strapi.log.error(e);
       }
@@ -376,7 +398,7 @@ const twilio = ({ strapi }) => ({
 const formatData = () => ({
   formatData(data) {
     let message = "";
-    for (let key in data) {
+    for (const key in data) {
       if (typeof data[key] === "object") {
         message += `${key}: ${JSON.stringify(data[key], null, 2)}
 `;

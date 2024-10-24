@@ -1,6 +1,8 @@
 import type { Core } from "@strapi/strapi";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CoreStrapi extends Core.Strapi {}
+
 export type CaptchaValidateResult =
   | {
       valid: true;
@@ -13,9 +15,9 @@ export type CaptchaValidateResult =
     };
 
 export type NotificationProviderFunction = (
-  config: Record<string, any>,
+  config: Record<string, unknown>,
   formName: string,
-  data: Object
+  data: unknown
 ) => Promise<boolean>;
 
 export interface NotificationProvider {

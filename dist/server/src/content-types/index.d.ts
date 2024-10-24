@@ -13,10 +13,10 @@ declare const _default: {
                 draftAndPublish: boolean;
             };
             pluginOptions: {
-                'content-manager': {
+                "content-manager": {
                     visible: boolean;
                 };
-                'content-type-builder': {
+                "content-type-builder": {
                     visible: boolean;
                 };
             };
@@ -56,10 +56,10 @@ declare const _default: {
                 draftAndPublish: boolean;
             };
             pluginOptions: {
-                'content-manager': {
+                "content-manager": {
                     visible: boolean;
                 };
-                'content-type-builder': {
+                "content-type-builder": {
                     visible: boolean;
                 };
             };

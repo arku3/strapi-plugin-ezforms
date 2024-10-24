@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/strapi';
+import type { Core } from "@strapi/strapi";
 export interface CoreStrapi extends Core.Strapi {
 }
 export type CaptchaValidateResult = {
@@ -9,7 +9,7 @@ export type CaptchaValidateResult = {
     message: string;
     code: number;
 };
-export type NotificationProviderFunction = (config: Record<string, any>, formName: string, data: Object) => Promise<boolean>;
+export type NotificationProviderFunction = (config: Record<string, unknown>, formName: string, data: unknown) => Promise<boolean>;
 export interface NotificationProvider {
     send: NotificationProviderFunction;
 }

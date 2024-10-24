@@ -2,16 +2,18 @@ import { CoreStrapi, NotificationProvider } from "../../types";
 
 export default ({ strapi }: { strapi: CoreStrapi }): NotificationProvider => ({
   async send(config, formName, data) {
-    let recipients = await strapi.query("plugin::ezforms.recipient").findMany();
+    const recipients = await strapi
+      .query("plugin::ezforms.recipient")
+      .findMany();
     //Loop through data and construct message from data object
-    let formattedData = strapi
+    const formattedData = strapi
       .plugin("ezforms")
       .service("formatData")
       .formatData(data);
-    let message =
+    const message =
       formName !== "form" ? `${formName} \n ${formattedData}` : formattedData;
     //loop through the recipients and send an email
-    for (let recipient of recipients) {
+    for (const recipient of recipients) {
       try {
         await strapi.plugins["email"].services.email.send({
           to: recipient.email,
